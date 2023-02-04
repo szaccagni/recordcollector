@@ -1,0 +1,23 @@
+body {
+    margin: 0 3rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 5rem;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.nav-right a {
+    margin-left: 1rem;
+}
+
+.record-title {
+    padding: 1rem;
+}

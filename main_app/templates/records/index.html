@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}<title>All Records</title>{% endblock %}
+{% block content %}
+<h1>All Records</h1>
+
+{% for record in records %}
+    <div class="record-title"><b>{{record.artist}}</b> - {{record.album}}</div>
+{% endfor %}
+{% endblock %}
