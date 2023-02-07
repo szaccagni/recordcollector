@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 {% block title %}<title>Record Detail</title>{% endblock %}
 {% block content %}
+<div>
     <h1>{{ record.artist }}</h1>
     <p>{{ record.album }}</p>
     <p>{{ record.released }}</p>
+</div>
+<div>
+    <form action="{% url 'add_review' record.id %}" method="POST">
+        {% csrf_token %}
+        {{review_form.as_p}}
+        <input type="submit" value="Add Review">
+    </form>
+    {% if record.review_set.count %}
+    <table>
+        {% for review in record.review_set.all %}
+        <tr>
+            <td>{{ review.review }}</td>
+            <td>{{ review.rating }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>no reviews yet</p>
+    {% endif %}
+</div>
 {% endblock %}
