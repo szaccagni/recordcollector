@@ -7,5 +7,7 @@
     <a href="{% url 'detail' record.id %}">
         <div class="record-title"><b>{{record.artist}}</b> - {{record.album}}</div>
     </a>
+    <a href="{% url 'records_update' record.id %}">Edit Record</a>
+    <a href="{% url 'records_delete' record.id %}">Remove Record</a>
 {% endfor %}
 {% endblock %}

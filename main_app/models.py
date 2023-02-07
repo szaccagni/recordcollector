@@ -8,3 +8,6 @@ class Record(models.Model):
 
     def __str__(self):
         return f'{self.artist} - {self.album}'
+
+    def get_absolute_url(self):
+        return reverse('detail',kwargs={'record_id': self.id})

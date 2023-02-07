@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}<title>New Record</title>{% endblock %}
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table}}
+    </table>
+    {% if object %}
+        <input type="submit" value="Save Record">
+    {% else %}
+        <input type="submit" value="Add Record">
+    {% endif %}
+</form>
+{% endblock %}

@@ -14,8 +14,9 @@
         <div class="nav-left"><a href="/"><img src="https://i.imgur.com/7XaKVSO.png"></a></div>
         <div class="nav-center"></div>
         <div class="nav-right">
-            <a href="/about">About</a>
-            <a href="/records">All Records</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'records_create' %}">Add a Record</a>
+            <a href="{% url 'index' %}">All Records</a>
         </div>
     </nav>
     {% block content %}
