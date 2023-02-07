@@ -4,6 +4,8 @@
 <h1>All Records</h1>
 
 {% for record in records %}
-    <div class="record-title"><b>{{record.artist}}</b> - {{record.album}}</div>
+    <a href="{% url 'detail' record.id %}">
+        <div class="record-title"><b>{{record.artist}}</b> - {{record.album}}</div>
+    </a>
 {% endfor %}
 {% endblock %}
