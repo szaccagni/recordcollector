@@ -8,17 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body {% block bodytag %}{% endblock %} >
     <nav>
         <div class="nav-left"><a href="/">home</a></div>
         <div class="nav-center"></div>
         <div class="nav-right">
-            <a href="{% url 'about' %}">About</a>
-            <a href="{% url 'sellers_create' %}">Add a Seller</a>
-            <a href="{% url 'sellers_index' %}">All Sellers</a>
-            <a href="{% url 'records_create' %}">Add a Record</a>
-            <a href="{% url 'index' %}">All Records</a>
+            <a href="{% url 'about' %}" data-active-link="{{activeLink}}" id="about">About</a>
+            <a href="{% url 'sellers_create' %}" data-active-link="{{activeLink}}" id="add-seller">Add a Seller</a>
+            <a href="{% url 'sellers_index' %}" data-active-link="{{activeLink}}" id="all-sellers">All Sellers</a>
+            <a href="{% url 'records_create' %}" data-active-link="{{activeLink}}" id="add-record">Add a Record</a>
+            <a href="{% url 'index' %}" data-active-link="{{activeLink}}" id="all-records">All Records</a>
         </div>
     </nav>
     {% block content %}

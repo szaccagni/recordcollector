@@ -99,4 +99,58 @@ a {
 
 .about {
     background-color:  rgb(255,233,115);
+    color:black;
+}
+
+.about a {
+    color: black;
+}
+
+.about a:hover {
+    color:  rgb(229, 89, 55);
+}
+
+.about-flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 30px
+}
+
+.about-left {
+    width: 35%;
+}
+
+.about-mini-title {
+    max-height: 150px;
+    font-size: 55px;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.about-mini-title div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-text {
+    padding-top: 30px;
+    text-align: justify;
+}
+
+.about-right {
+    width: 50%;
+}
+
+.about-img-container {
+    height: 70vh;
+    width: 70vh;
+    overflow: hidden;
+    border: 1px solid rgb(255,233,115);
+    border-radius: 500px;
+}
+
+.about-right img {
+    width: 100%;
 }
