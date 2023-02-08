@@ -13,7 +13,28 @@ body {
 .home-pg-title {
     font-size: 225px;
     text-align: right;
+    margin-right: 3rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+    right: 0px;
 }
+
+#home-pg-record-gif {
+    text-align: center;
+    width: 100%;
+    margin-top: 300px;
+    position: absolute;
+    right: 0px;
+    z-index: -1;
+}
+
+#home-pg-record-gif img {
+    width: 750px;
+}
+
 
 nav {
     display: flex;
