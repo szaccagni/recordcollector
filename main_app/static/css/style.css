@@ -1,6 +1,18 @@
 body {
-    margin: 0 3rem;
+    padding: 0 3rem;
     text-align: center;
+    font-family: 'Circular-Loom';
+}
+
+.home-pg {
+    background-color: rgb(229, 89, 55);
+    color: rgb(255,233,115);
+    height: 100%;
+}
+
+.home-pg-title {
+    font-size: 225px;
+    text-align: right;
 }
 
 nav {
@@ -20,4 +32,8 @@ nav img {
 
 .record-title {
     padding: 1rem;
+}
+
+.about {
+    background-color:  rgb(255,233,115);
 }

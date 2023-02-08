@@ -9,9 +9,9 @@
     {% block title %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body {% block bodytag %}{% endblock %} >
     <nav>
-        <div class="nav-left"><a href="/"><img src="https://i.imgur.com/7XaKVSO.png"></a></div>
+        <div class="nav-left"><a href="/"><img id="nav-record" src="https://i.imgur.com/7XaKVSO.png"></a></div>
         <div class="nav-center"></div>
         <div class="nav-right">
             <a href="{% url 'about' %}">About</a>
