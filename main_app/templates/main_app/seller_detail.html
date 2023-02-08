@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}<title>All Sellers</title>{% endblock %}
+{% block content %}
+
+<h1>{{seller.soldBy}}</h1>
+
+{% if seller.price_set.count %}
+    <h3>Currently Selling:</h3>
+    {% for price in seller.price_set.all %}
+        <div>{{price.record}} <b>{{price.price}}</b></div>
+    {% endfor %}
+{% endif %}
+<br>
+<a href="{% url 'price_create' seller.id %}">Price a Record</a>
+
+{% endblock %}

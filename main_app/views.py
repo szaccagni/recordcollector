@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from .models import Record
-from .forms import ReviewForm
+from django.views.generic import ListView, DetailView
+from .models import Record, Seller, Price
+from .forms import ReviewForm, PriceForm
 
 def home(request):
     return render(request, 'home.html')
@@ -39,3 +40,29 @@ def add_review(request, record_id):
         new_review.record_id = record_id
         new_review.save()
     return redirect('detail', record_id=record_id)
+
+class SellerList(ListView):
+    model = Seller
+
+class SellerDetail(DetailView):
+    model = Seller
+
+class SellerCreate(CreateView):
+    model = Seller
+    fields = '__all__'
+
+class SellerUpdate(UpdateView):
+    model = Seller
+    fields = ['review', 'price']
+
+class PriceCreate(CreateView):
+    model = Price
+    form_class = PriceForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.seller = get_object_or_404(Seller, pk=kwargs['seller_id'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.seller = self.seller
+        return super().form_valid(form)

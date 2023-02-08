@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}<title>All Sellers</title>{% endblock %}
+{% block content %}
+
+{% for seller in seller_list %}
+    <a href="{% url 'sellers_detail' seller.id %}">
+        <p>{{ seller.soldBy }}</p>
+    </a>
+{% endfor %}
+
+{% endblock %}
