@@ -7,7 +7,7 @@
 {% if seller.price_set.count %}
     <h3>Currently Selling:</h3>
     {% for price in seller.price_set.all %}
-        <div>{{price.record}} <b>{{price.price}}</b></div>
+        <div>{{price.record}} <b>{{price.price}} {{price.currency}}</b></div>
     {% endfor %}
 {% endif %}
 <br>

@@ -12,6 +12,8 @@
         {{review_form.as_p}}
         <input type="submit" value="Add Review">
     </form>
+</div>
+<div>
     {% if record.review_set.count %}
     <table>
         {% for review in record.review_set.all %}
@@ -25,4 +27,14 @@
     <p>no reviews yet</p>
     {% endif %}
 </div>
+<div>
+    {% if record.price_set.count %}
+        {% for price in record.price_set.all %}
+            <div>{{price.record}} <b>{{price.price}}</b></div>
+        {% endfor %}
+    {% else %}
+        <p>record is sold out!</p>
+    {% endif %}
+</div>
+
 {% endblock %}
