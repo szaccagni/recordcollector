@@ -8,7 +8,7 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    return render(request, 'about.html', {'activeLink': 'about'})
+    return render(request, 'about.html', {'activeLink': 'about', 'dataColor': '#0E0E0F'})
 
 def records_index(request):
     records = Record.objects.all()
@@ -43,6 +43,14 @@ def add_review(request, record_id):
 
 class SellerList(ListView):
     model = Seller
+    template_name = 'main_app/vseller_list.html'
+	
+    def get_context_data(self, **kwargs):
+        context = super(SellerList, self).get_context_data(**kwargs)
+        context['activeLink'] = 'sellers'
+        context['dataColor'] = '#FFE973'
+        return context
+
 
 class SellerDetail(DetailView):
     model = Seller

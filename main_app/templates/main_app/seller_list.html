@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}<title>All Sellers</title>{% endblock %}
+{% block bodytag%} class='sellers' {% endblock %}
 {% block content %}
 
-{% for seller in seller_list %}
-    <a href="{% url 'sellers_detail' seller.id %}">
-        <p>{{ seller.soldBy }}</p>
-    </a>
-{% endfor %}
+<div class="seller-container">
+    {% for seller in seller_list %}
+    <div class="paint-chip-container">
+        <a href="{% url 'sellers_detail' seller.id %}">
+            <div class="paint-chip">
+                <div>{{ seller.soldBy }}</div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    <div class="paint-chip-container">
+        <a href="{% url 'sellers_create' %}">
+            <div class="paint-chip new-seller-btn">
+                <div>add new seller</div>
+            </div>
+        </a>
+    </div>
+</div>
+
 
 {% endblock %}

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function activeNavItem() {
     const navItems = nav.querySelectorAll('a')
     navItems.forEach(item => {
-        if (item.dataset.activeLink === item.id) item.style.borderBottom = '3px solid #0E0E0F'
+        const color = item.dataset.color
+        if (item.dataset.activeLink === item.id) item.style.borderBottom = `3px solid ${color}`
     })
 }

@@ -113,7 +113,7 @@ a {
 .about-flex-container {
     display: flex;
     justify-content: space-between;
-    padding: 100px 30px
+    padding: 100px 30px;
 }
 
 .about-left {
@@ -153,4 +153,49 @@ a {
 
 .about-right img {
     width: 100%;
+}
+
+.sellers {
+    background-color: rgb(229, 89, 55);
+    color: rgb(255,233,115);
+}
+
+.sellers a {
+    color: rgb(255,233,115);
+}
+
+.seller-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 100px 30px;
+}
+
+.paint-chip-container {
+    margin: 50px 0 30px 0;
+    width: 30vh;
+    border-radius: 200px;
+    border: 1px solid rgb(229, 89, 55);
+    overflow: hidden;
+}
+
+.paint-chip {
+    width: 100%;
+    height: 30vh;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 500px;
+}
+
+.paint-chip:hover {
+    border: 5px solid black;
+}
+
+.new-seller-btn {
+    background-color: rgb(255,233,115);
+    color: black;
 }
