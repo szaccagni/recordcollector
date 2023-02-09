@@ -4,26 +4,31 @@
 {% block content %}
 <div class="flex-container">
     {% for record in records %}
-    <div class="records-container">
-        <a href="{% url 'detail' record.id %}">
-            <div class="records-img-first">
-                {% if record.photo_set.count %}
-                    {% with record.photo_set.all|first as photo %}
-                    <img src="{{photo.url}}">
-                    {% endwith %}
-                {% else %}
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrIZls0VHBmOrtaeoakb51PzHQwiY553sduQU7h23hvS9sf-O7CX1KAoVkeDkUJ5a2hLY&usqp=CAU">
-                {% endif %}
+        <div class="records-container">
+            <a href="{% url 'detail' record.id %}">
+                <div class="records-img-first">
+                    {% if record.photo_set.count %}
+                        {% with record.photo_set.all|first as photo %}
+                        <img src="{{photo.url}}">
+                        {% endwith %}
+                    {% else %}
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrIZls0VHBmOrtaeoakb51PzHQwiY553sduQU7h23hvS9sf-O7CX1KAoVkeDkUJ5a2hLY&usqp=CAU">
+                    {% endif %}
+                </div>
+                <div class="records-name">
+                    <b>{{record.artist}}</b> - {{record.album}}
+                </div>
+            </a>
+            <div class="records-btns">
+                <a href="{% url 'records_update' record.id %}">Edit</a>
+                <a href="{% url 'records_delete' record.id %}">Remove</a>
             </div>
-            <div class="records-name">
-                <b>{{record.artist}}</b> - {{record.album}}
+        </div>
+    {% endfor %}
+        <a href="{% url 'records_create' %}" id="add-record">
+            <div class="add-new-record">
+                <div>Add a Record</div>
             </div>
         </a>
-        <div class="records-btns">
-            <a href="{% url 'records_update' record.id %}">Edit</a>
-            <a href="{% url 'records_delete' record.id %}">Remove</a>
-        </div>
-    </div>
-{% endfor %}
 </div>
 {% endblock %}
