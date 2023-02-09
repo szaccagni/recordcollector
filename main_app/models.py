@@ -50,3 +50,10 @@ class Review(models.Model):
     review = models.CharField(max_length=500)
     rating = models.IntegerField()
     record = models.ForeignKey(Record, on_delete=models.CASCADE)
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    record = models.ForeignKey(Record, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for record_id: {self.record_id} @{self.url}"

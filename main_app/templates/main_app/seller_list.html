@@ -3,7 +3,7 @@
 {% block bodytag%} class='sellers' {% endblock %}
 {% block content %}
 
-<div class="seller-container">
+<div class="flex-container">
     {% for seller in seller_list %}
     <div class="paint-chip-container">
         <a href="{% url 'sellers_detail' seller.id %}">

@@ -19,6 +19,14 @@ a {
     text-decoration: none;
 }
 
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 100px 30px;
+}
+
 .nav-right a {
     margin-left: 1rem;
 }
@@ -93,10 +101,6 @@ a {
     align-items: center;
 }
 
-.record-title {
-    padding: 1rem;
-}
-
 .about {
     background-color:  rgb(255,233,115);
     color:black;
@@ -106,9 +110,6 @@ a {
     color: black;
 }
 
-.about a:hover {
-    color:  rgb(229, 89, 55);
-}
 
 .about-flex-container {
     display: flex;
@@ -164,15 +165,8 @@ a {
     color: rgb(255,233,115);
 }
 
-.seller-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 100px 30px;
-}
-
 .paint-chip-container {
-    margin: 50px 0 30px 0;
+    margin: 50px 10px 30px 10px;
     width: 30vh;
     border-radius: 200px;
     border: 1px solid rgb(229, 89, 55);
@@ -198,4 +192,30 @@ a {
 .new-seller-btn {
     background-color: rgb(255,233,115);
     color: black;
+}
+
+.records {
+    background-color: rgb(255,233,115);
+    color: black;
+}
+.records a {
+    color: black;
+}
+
+.records-container {
+    margin: 0 15px 30px 15px;
+    width: 30vh;
+}
+
+.records-img-first img {
+    width: 100%;
+}
+
+.records-name {
+    font-size: 1.5rem;
+}
+
+.records-btns a {
+    font-size: .75rem;
+    margin: 10px;
 }

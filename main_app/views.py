@@ -1,7 +1,10 @@
+import uuid
+import boto3
+import os
 from django.shortcuts import render,redirect, get_object_or_404
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Record, Seller, Price
+from .models import Record, Seller, Price, Photo
 from .forms import ReviewForm, PriceForm
 
 def home(request):
@@ -13,7 +16,9 @@ def about(request):
 def records_index(request):
     records = Record.objects.all()
     return render(request, 'records/index.html', {
-        'records': records
+        'records': records,
+        'activeLink' : 'records',
+        'dataColor' : '#0E0E0F'
     })
 
 def records_detail(request, record_id):
@@ -51,7 +56,6 @@ class SellerList(ListView):
         context['dataColor'] = '#FFE973'
         return context
 
-
 class SellerDetail(DetailView):
     model = Seller
 
@@ -74,3 +78,18 @@ class PriceCreate(CreateView):
     def form_valid(self, form):
         form.instance.seller = self.seller
         return super().form_valid(form)
+
+def add_photo(request, record_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, record_id=record_id)
+        except Exception as e:
+            print('Anerror occurred uplaodding file to S3')
+            print(e)
+    return redirect('detail', record_id=record_id)
