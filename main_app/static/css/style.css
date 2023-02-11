@@ -19,6 +19,10 @@ a {
     text-decoration: none;
 }
 
+button, input[type=submit] {
+    cursor: pointer;
+}
+
 .center-container {
     display: flex;
     justify-content: center;
@@ -239,10 +243,10 @@ a {
     color: rgb(255,233,115);
 }
 
-.records-form {
+.format-form {
     padding: 100px 0;
 }
 
-.records-form input {
+.format-form input {
     margin: 10px;
 }

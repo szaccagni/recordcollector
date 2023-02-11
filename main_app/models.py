@@ -8,7 +8,7 @@ CURRENCIES = (
 )
 
 class Seller(models.Model):
-    soldBy = models.CharField(max_length=200)
+    soldBy = models.CharField('name', max_length=200)
 
     def __str__(self):
         return self.soldBy

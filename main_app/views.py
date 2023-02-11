@@ -29,6 +29,7 @@ def records_detail(request, record_id):
 class RecordCreate(CreateView):
     model = Record
     fields = ['artist', 'album', 'released']
+
     def get_context_data(self, **kwargs):
         context = super(RecordCreate, self).get_context_data(**kwargs)
         context['activeLink'] = 'records'
@@ -70,13 +71,33 @@ class SellerList(ListView):
 class SellerDetail(DetailView):
     model = Seller
 
+    def get_context_data(self, **kwargs):
+        context = super(SellerDetail, self).get_context_data(**kwargs)
+        context['activeLink'] = 'sellers'
+        context['dataColor'] = '#FFE973'
+        return context
+
+
 class SellerCreate(CreateView):
     model = Seller
     fields = '__all__'
 
+    def get_context_data(self, **kwargs):
+        context = super(SellerCreate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'sellers'
+        context['dataColor'] = '#FFE973'
+        return context
+
 class SellerUpdate(UpdateView):
     model = Seller
     fields = ['review', 'price']
+
+    def get_context_data(self, **kwargs):
+        context = super(SellerUpdate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'sellers'
+        context['dataColor'] = '#FFE973'
+        return context
+
 
 class PriceCreate(CreateView):
     model = Price
@@ -89,6 +110,12 @@ class PriceCreate(CreateView):
     def form_valid(self, form):
         form.instance.seller = self.seller
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(PriceCreate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'sellers'
+        context['dataColor'] = '#FFE973'
+        return context
 
 def add_photo(request, record_id):
     photo_file = request.FILES.get('photo-file', None)

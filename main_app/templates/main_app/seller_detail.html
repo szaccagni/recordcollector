@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}<title>All Sellers</title>{% endblock %}
+{% block bodytag %} class='sellers' {% endblock %}
 {% block content %}
 
 <h1>{{seller.soldBy}}</h1>
@@ -9,8 +10,10 @@
     {% for price in seller.price_set.all %}
         <div>{{price.record}} <b>{{price.price}} {{price.currency}}</b></div>
     {% endfor %}
+{% else %}
+    <div>all sold out!</div>
 {% endif %}
 <br>
-<a href="{% url 'price_create' seller.id %}">Price a Record</a>
+<a href="{% url 'price_create' seller.id %}"><button>Price a Record</button></a>
 
 {% endblock %}

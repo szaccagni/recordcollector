@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}<title>All Sellers</title>{% endblock %}
+{% block title %}<title>Price a Record</title>{% endblock %}
+{% block bodytag %} class='sellers' {% endblock %}
 {% block content %}
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="list record">
-</form>
-
+<div class="center-container">
+    <div class="format-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="list record">
+        </form>
+    </div>
+</div>
 {% endblock %}
