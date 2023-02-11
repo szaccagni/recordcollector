@@ -19,11 +19,14 @@ a {
     text-decoration: none;
 }
 
+.center-container {
+    display: flex;
+    justify-content: center;
+}
 
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 100px 30px;
 }
 
@@ -228,7 +231,7 @@ a {
     align-items: center;
     justify-content: center;
     color: white;
-    transition: all .3s;
+    transition: color,background-color .3s;
 }
 
 .add-new-record:hover {
@@ -236,3 +239,10 @@ a {
     color: rgb(255,233,115);
 }
 
+.records-form {
+    padding: 100px 0;
+}
+
+.records-form input {
+    margin: 10px;
+}

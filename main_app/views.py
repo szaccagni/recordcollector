@@ -28,11 +28,22 @@ def records_detail(request, record_id):
 
 class RecordCreate(CreateView):
     model = Record
-    fields = '__all__'
+    fields = ['artist', 'album', 'released']
+    def get_context_data(self, **kwargs):
+        context = super(RecordCreate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'records'
+        context['dataColor'] = '#0E0E0F'
+        return context
 
 class RecordUpdate(UpdateView):
     model = Record
-    fields = '__all__'
+    fields = ['artist', 'album', 'released']
+
+    def get_context_data(self, **kwargs):
+        context = super(RecordUpdate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'records'
+        context['dataColor'] = '#0E0E0F'
+        return context
 
 class RecordDelete(DeleteView):
     model = Record
