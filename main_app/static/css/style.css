@@ -28,6 +28,11 @@ button, input[type=submit] {
     justify-content: center;
 }
 
+.space-around-container {
+    display: flex;
+    justify-content: space-around;
+}
+
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -243,6 +248,15 @@ button, input[type=submit] {
     color: rgb(255,233,115);
 }
 
+.record-photo-container img {
+    width: 50vh;
+}
+
+.record-detail-left div {
+    margin: 25px 0;
+    box-sizing: border-box;
+}
+
 .format-form {
     padding: 100px 0;
 }
@@ -250,3 +264,4 @@ button, input[type=submit] {
 .format-form input {
     margin: 10px;
 }
+

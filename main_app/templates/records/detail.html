@@ -2,54 +2,60 @@
 {% block title %}<title>Record Detail</title>{% endblock %}
 {% block content %}
 <div>
-    {% for photo in record.photo_set.all %}
-        <img src="{{photo.url}}">
-    {% empty %}
-        no photos uploadded
-    {% endfor %}
+    <h1>{{ record.artist }} - {{ record.album }}</h1>
+    <h3>{{ record.released }}</h3>
 </div>
-<div>
-    <form action="{% url 'add_photo' record.id %}" enctype="multipart/form-data" method="POST" >
-        {% csrf_token %}
-        <input type="file" name="photo-file">
-        <br><br>
-        <button type="submit">Upload Photo</button>
-    </form>
-</div>
-<div>
-    <h1>{{ record.artist }}</h1>
-    <p>{{ record.album }}</p>
-    <p>{{ record.released }}</p>
-</div>
-<div>
-    <form action="{% url 'add_review' record.id %}" method="POST">
-        {% csrf_token %}
-        {{review_form.as_p}}
-        <input type="submit" value="Add Review">
-    </form>
-</div>
-<div>
-    {% if record.review_set.count %}
-    <table>
-        {% for review in record.review_set.all %}
-        <tr>
-            <td>{{ review.review }}</td>
-            <td>{{ review.rating }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>no reviews yet</p>
-    {% endif %}
-</div>
-<div>
-    {% if record.price_set.count %}
-        {% for price in record.price_set.all %}
-            <div>{{price.record}} <b>{{price.price}}</b></div>
-        {% endfor %}
-    {% else %}
-        <p>record is sold out!</p>
-    {% endif %}
+<div class="flex-container space-around-container">
+    <div class="record-detail-left">
+        <div class="record-photo-container">
+            {% for photo in record.photo_set.all %}
+                <img src="{{photo.url}}">
+            {% empty %}
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrIZls0VHBmOrtaeoakb51PzHQwiY553sduQU7h23hvS9sf-O7CX1KAoVkeDkUJ5a2hLY&usqp=CAU">
+            {% endfor %}
+        </div>
+        <div>
+            <form action="{% url 'add_photo' record.id %}" enctype="multipart/form-data" method="POST" >
+                {% csrf_token %}
+                <input type="file" name="photo-file">
+                <br><br>
+                <button type="submit">Upload Photo</button>
+            </form>
+        </div>
+    </div>
+    <div class="record-detail-right">
+        <div>
+            <form action="{% url 'add_review' record.id %}" method="POST">
+                {% csrf_token %}
+                {{review_form.as_p}}
+                <input type="submit" value="Add Review">
+            </form>
+        </div>
+        <div>
+            {% if record.review_set.count %}
+            <table>
+                {% for review in record.review_set.all %}
+                <tr>
+                    <td>{{ review.review }}</td>
+                    <td>{{ review.rating }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>no reviews yet</p>
+            {% endif %}
+        </div>
+        <div>
+            {% if record.price_set.count %}
+                <div>SELLERS:</div>
+                {% for price in record.price_set.all %}
+                    <div>{{price.record}} <b>{{price.price}}</b></div>
+                {% endfor %}
+            {% else %}
+                <p>record is sold out!</p>
+            {% endif %}
+        </div>
+    </div>    
 </div>
 
 {% endblock %}
