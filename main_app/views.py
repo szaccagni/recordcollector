@@ -82,6 +82,12 @@ class GenreCreate(CreateView):
     model = Genre
     fields = '__all__'
 
+    def get_context_data(self, **kwargs):
+        context = super(GenreCreate, self).get_context_data(**kwargs)
+        context['activeLink'] = 'genres'
+        context['dataColor'] = '#FFE973'
+        return context
+
 def add_genre(request, record_id, genre_id):
     Record.objects.get(id=record_id).genres.add(genre_id)
     return redirect('detail', record_id=record_id)
