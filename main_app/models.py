@@ -7,6 +7,15 @@ CURRENCIES = (
     ('GBP', 'British Pound Sterling')
 )
 
+class Genre(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('genres_index')
+
 class Seller(models.Model):
     soldBy = models.CharField('name', max_length=200)
 
@@ -21,6 +30,7 @@ class Record(models.Model):
     album = models.CharField(max_length=100)
     released = models.DateField()
     sellers = models.ManyToManyField(Seller, through='Price')
+    genres = models.ManyToManyField(Genre)
 
     def __str__(self):
         return f'{self.artist} - {self.album}'

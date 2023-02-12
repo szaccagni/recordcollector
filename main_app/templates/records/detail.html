@@ -46,13 +46,27 @@
             {% endif %}
         </div>
         <div>
-            {% if record.price_set.count %}
-                <div>SELLERS:</div>
-                {% for price in record.price_set.all %}
-                    <div>{{price.record}} <b>{{price.price}}</b></div>
+            {% if record.genres.count %}
+                <h3>Genres</h3>
+                {% for genre in record.genres.all %}
+                    <p>{{genre.name}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <h3>Add Genres</h3>
+            {% if genres.count %}
+                {% for genre in genres.all %}
+                    <div>
+                        {{genre.name}} 
+                        <form action="{% url 'add_genre' record.id genre.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
                 {% endfor %}
             {% else %}
-                <p>record is sold out!</p>
+                <p>all existing genres have been added to this record, maybe add some more genres</p>
             {% endif %}
         </div>
     </div>    

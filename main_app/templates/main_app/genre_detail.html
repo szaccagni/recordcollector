@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}<title>Genre Detail</title>{% endblock %}
+{% block bodytag %} class='sellers' {% endblock %}
+{% block content %}
+
+<h1>{{genre.name}}</h1>
+
+{% if genre.records_set.count %}
+    <h3>Currently Selling:</h3>
+    {% for record in genre.records_set.all %}
+        <div>{{record}}</div>
+    {% endfor %}
+{% else %}
+    <div>no records have been added to this genre</div>
+{% endif %}
+<br>
+
+{% endblock %}
